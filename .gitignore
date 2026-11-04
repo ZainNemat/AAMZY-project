@@ -1,0 +1,17 @@
+# Visual Studio temporary files
+.vs/
+*.user
+*.suo
+*.cache
+
+# Compiled files
+Debug/
+Release/
+x64/
+x86/
+*.exe
+*.obj
+*.pdb
+
+# Build directories
+build/
