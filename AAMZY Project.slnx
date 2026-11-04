@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="AAMZY Project.vcxproj" />
+  <Project Path="AAMZY Project.vcxproj" Id="b3c4c81c-4b02-4fcf-9c2b-6fa0bb33eb58" />
 </Solution>
