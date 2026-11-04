@@ -1,17 +1,21 @@
-# Visual Studio temporary files
+# Visual Studio
 .vs/
 *.user
 *.suo
 *.cache
 
 # Compiled files
-Debug/
-Release/
-x64/
-x86/
 *.exe
 *.obj
+*.o
 *.pdb
+*.dll
 
 # Build directories
-build/git
+Debug/
+Release/
+build/
+cmake-build-*/
+
+# VS Code user-specific settings
+.vscode/
