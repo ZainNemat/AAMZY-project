@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "AAMZY Project\\x64\\Debug\\XP.obj",
+            "outputs": [
+                "AAMZY Project\\x64\\Debug\\XP.cpp.obj.dt.module.json",
+                "AAMZY Project\\x64\\Debug\\XP.cpp.obj.dt.d.json"
+            ],
+            "requires": []
+        }
+    ]
+}
