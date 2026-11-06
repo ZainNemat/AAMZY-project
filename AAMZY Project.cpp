@@ -33,7 +33,7 @@ int main()
     string username;
 
     cout << "\t\t\t\t\t========================================\n";
-    cout << "\t\t\t\t\t||     WELCOME TO LEVELUP             ||\n";
+    cout << "\t\t\t\t\t||        WELCOME TO LEVELUP          ||\n";
     cout << "\t\t\t\t\t========================================\n\n";
     cout << "\t\t\t\t\tEnter your username: ";
     getline(cin, username);
