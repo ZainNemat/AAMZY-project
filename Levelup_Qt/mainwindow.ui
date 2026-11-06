@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>LevelUp!</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>801</width>
+      <height>531</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QTabWidget" name="tabWidget">
+       <property name="currentIndex">
+        <number>1</number>
+       </property>
+       <widget class="QWidget" name="tab">
+        <attribute name="title">
+         <string>Dashboard</string>
+        </attribute>
+        <widget class="QLabel" name="totalXpLabel">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>50</y>
+           <width>799</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Total XP: 0</string>
+         </property>
+        </widget>
+        <widget class="QProgressBar" name="xpProgressBar">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>94</y>
+           <width>799</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+        <widget class="QLabel" name="welcomeLabel">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>28</y>
+           <width>799</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Welcome, Player!</string>
+         </property>
+        </widget>
+        <widget class="QLabel" name="levelLabel">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>72</y>
+           <width>799</width>
+           <height>16</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Level 1</string>
+         </property>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="tab_2">
+        <attribute name="title">
+         <string>Tasks</string>
+        </attribute>
+        <widget class="QLineEdit" name="taskNameInput">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>40</y>
+           <width>181</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="placeholderText">
+          <string>Enter a task</string>
+         </property>
+        </widget>
+        <widget class="QComboBox" name="difficultyBox">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>80</y>
+           <width>121</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <item>
+          <property name="text">
+           <string>Easy (10 XP)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Medium (20 XP)</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Hard (40 XP)</string>
+          </property>
+         </item>
+        </widget>
+        <widget class="QPushButton" name="pushButton">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>120</y>
+           <width>80</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Add Task</string>
+         </property>
+        </widget>
+        <widget class="QListWidget" name="taskListWidget">
+         <property name="geometry">
+          <rect>
+           <x>40</x>
+           <y>160</y>
+           <width>561</width>
+           <height>261</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="completeTaskButton">
+         <property name="geometry">
+          <rect>
+           <x>130</x>
+           <y>120</y>
+           <width>171</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Complete Selected Task</string>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="deleteTaskButton">
+         <property name="geometry">
+          <rect>
+           <x>309</x>
+           <y>120</y>
+           <width>121</width>
+           <height>24</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>Delete Selected Task</string>
+         </property>
+        </widget>
+       </widget>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
