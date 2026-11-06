@@ -1,13 +1,12 @@
 
 #include <iostream>
 #include <string>
-using namespace std;
+#include "User.h"
+#include "Task.h"
+#include "Achievement.h"
+#include "Statistics.h"
 
-void initializeUser(string name);
-void displayDashboard();
-void manageTasks();
-void displayAchievements();
-void displayStatistics();
+using namespace std;
 
 void displayMenu()
 {
@@ -38,7 +37,7 @@ int main()
     cout << "Enter your username: ";
     getline(cin, username);
 
-    initializeUser(username);
+    setUsername(username);
 
     while (true)
     {

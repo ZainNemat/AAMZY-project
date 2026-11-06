@@ -1,6 +1,7 @@
-
+#include "User.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 string username = "Player";
@@ -12,7 +13,7 @@ int nextLevelXP = 100;
 int currentStreak = 0;
 int longestStreak = 0;
 
-void initializeUser(string name)
+void setUsername(string name)
 {
     username = name;
 }

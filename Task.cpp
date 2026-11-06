@@ -1,14 +1,10 @@
-
+#include "Task.h"
+#include "Achievement.h"
+#include "User.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
-
-extern int totalXP;
-extern int currentXP;
-extern int nextLevelXP;
-extern int level;
-
-void checkAchievements();
 
 string tasks[100];
 int taskXP[100];

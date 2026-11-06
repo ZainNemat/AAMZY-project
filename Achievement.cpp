@@ -1,11 +1,10 @@
-
 #include <iostream>
 #include <string>
+#include "Achievement.h"
+#include "Task.h"
+#include "User.h"
+
 using namespace std;
-extern int totalXP;
-extern int level;
-extern int taskCount;
-extern bool taskCompleted[100];
 
 string achievementNames[5] =
 {
