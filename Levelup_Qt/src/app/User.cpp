@@ -1,8 +1,11 @@
 #include "User.h"
 
+#include <QDate>
+
 namespace
 {
 std::string username = "Player";
+QDate lastCompletionDate;
 }
 
 int level = 1;
@@ -20,4 +23,42 @@ void setUsername(std::string name)
 std::string getUsername()
 {
     return username;
+}
+
+void recordTaskCompletionDay()
+{
+    const QDate today = QDate::currentDate();
+
+    if (lastCompletionDate.isValid() && today <= lastCompletionDate)
+    {
+        return;
+    }
+
+    if (lastCompletionDate.isValid() && lastCompletionDate.addDays(1) == today)
+    {
+        ++currentStreak;
+    }
+    else
+    {
+        currentStreak = 1;
+    }
+
+    lastCompletionDate = today;
+
+    if (currentStreak > longestStreak)
+    {
+        longestStreak = currentStreak;
+    }
+}
+
+int getCurrentStreak()
+{
+    const QDate today = QDate::currentDate();
+
+    if (!lastCompletionDate.isValid() || lastCompletionDate.addDays(1) < today)
+    {
+        return 0;
+    }
+
+    return currentStreak;
 }

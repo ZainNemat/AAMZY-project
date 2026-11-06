@@ -24,5 +24,7 @@ private:
     void onDeleteTask();
     void refreshStatistics();
     void refreshDashboard();
+    void refreshAchievements();
+    void refreshProgressViews();
 };
 #endif // MAINWINDOW_H

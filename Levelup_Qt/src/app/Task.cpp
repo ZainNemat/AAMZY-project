@@ -49,6 +49,7 @@ bool completeTask(int index)
         ++level;
     }
 
+    recordTaskCompletionDay();
     checkAchievements();
     return true;
 }

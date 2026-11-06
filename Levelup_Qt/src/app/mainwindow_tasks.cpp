@@ -58,6 +58,7 @@ void MainWindow::onCompleteTask()
 
     refreshDashboard();
     refreshStatistics();
+    refreshAchievements();
 }
 
 void MainWindow::onDeleteTask()

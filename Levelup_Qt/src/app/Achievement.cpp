@@ -1,91 +1,57 @@
-#include <iostream>
-#include <string>
 #include "Achievement.h"
 #include "Task.h"
 #include "User.h"
 
-using namespace std;
-
-string achievementNames[5] =
+namespace
 {
-    "First Step",
-    "Getting Started",
-    "Productive",
-    "XP Hunter",
-    "Level Master"
-};
-
-string achievementDescriptions[5] =
-{
-    "Complete your first task",
-    "Complete 5 tasks",
-    "Complete 10 tasks",
-    "Earn 500 XP",
-    "Reach Level 5"
-};
-
-bool achievementUnlocked[5] = { false, false, false, false, false };
+std::array<Achievement, 5> achievements{{
+    {"First Step", "Complete your first task", false},
+    {"Getting Started", "Complete 5 tasks", false},
+    {"Productive", "Complete 10 tasks", false},
+    {"XP Hunter", "Earn 500 XP", false},
+    {"Level Master", "Reach Level 5", false}
+}};
+}
 
 void checkAchievements()
 {
     int completedTasks = 0;
 
-    for (int i = 0; i < taskCount; i++)
+    for (int i = 0; i < taskCount; ++i)
     {
-        if (taskCompleted[i] == true)
+        if (taskCompleted[i])
         {
-            completedTasks++;
+            ++completedTasks;
         }
     }
 
     if (completedTasks >= 1)
     {
-        achievementUnlocked[0] = true;
+        achievements[0].unlocked = true;
     }
 
     if (completedTasks >= 5)
     {
-        achievementUnlocked[1] = true;
+        achievements[1].unlocked = true;
     }
 
     if (completedTasks >= 10)
     {
-        achievementUnlocked[2] = true;
+        achievements[2].unlocked = true;
     }
 
     if (totalXP >= 500)
     {
-        achievementUnlocked[3] = true;
+        achievements[3].unlocked = true;
     }
 
     if (level >= 5)
     {
-        achievementUnlocked[4] = true;
+        achievements[4].unlocked = true;
     }
 }
 
-void displayAchievements()
+const std::array<Achievement, 5>& getAchievements()
 {
-    checkAchievements();
-
-    cout << "\n========================================\n";
-    cout << "              ACHIEVEMENTS\n";
-    cout << "========================================\n";
-
-    for (int i = 0; i < 5; i++)
-    {
-        cout << "\nAchievement: " << achievementNames[i] << endl;
-        cout << "Description: " << achievementDescriptions[i] << endl;
-
-        if (achievementUnlocked[i] == true)
-        {
-            cout << "Status: UNLOCKED!\n";
-        }
-        else
-        {
-            cout << "Status: LOCKED\n";
-        }
-
-        cout << "----------------------------------------\n";
-    }
+    return achievements;
 }

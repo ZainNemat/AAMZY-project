@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "User.h"
-
 #include <QString>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -17,9 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
         );
 
     ui->xpProgressBar->setFormat("%v / %m XP");
-    refreshDashboard();
-    refreshStatistics();
-
+    refreshProgressViews();
     connect(ui->pushButton, &QPushButton::clicked,
             this, &MainWindow::onAddTask);
 
@@ -41,4 +38,17 @@ void MainWindow::refreshDashboard()
     ui->totalXpLabel->setText(QString("Total XP: %1").arg(totalXP));
     ui->xpProgressBar->setRange(0, nextLevelXP);
     ui->xpProgressBar->setValue(currentXP);
+
+    ui->currentStreakLabel->setText(
+        QString("Current streak: %1 days").arg(getCurrentStreak())
+        );
+    ui->longestStreakLabel->setText(
+        QString("Longest streak: %1 days").arg(longestStreak)
+        );
+}
+void MainWindow::refreshProgressViews()
+{
+    refreshDashboard();
+    refreshStatistics();
+    refreshAchievements();
 }
