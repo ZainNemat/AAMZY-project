@@ -1,4 +1,8 @@
-﻿  Achievement.cpp
+﻿  AAMZY Project.cpp
+  Achievement.cpp
+  Statistics.cpp
+  Task.cpp
   User.cpp
   Generating Code...
-  AAMZY Project.vcxproj -> D:\Development\Assignments\Class projects\AAMZY Project\x64\Debug\AAMZY Project.exe
+  LINK : M:\AAMZY-project\x64\Debug\AAMZY Project.exe not found or not built by the last incremental link; performing full link
+  AAMZY Project.vcxproj -> M:\AAMZY-project\x64\Debug\AAMZY Project.exe
