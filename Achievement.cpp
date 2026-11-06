@@ -68,25 +68,25 @@ void checkAchievements()
 void displayAchievements()
 {
     checkAchievements();
-
-    cout << "\n========================================\n";
-    cout << "              ACHIEVEMENTS\n";
-    cout << "========================================\n";
+                        
+    cout << "\n\n\n\t\t\t\t\t----------------------------------------\n";
+    cout << "\t\t\t\t\t|              ACHIEVEMENTS            |\n";
+    cout << "\t\t\t\t\t----------------------------------------\n";
 
     for (int i = 0; i < 5; i++)
     {
-        cout << "\nAchievement: " << achievementNames[i] << endl;
-        cout << "Description: " << achievementDescriptions[i] << endl;
+        cout << "\n\t\t\t\t\tAchievement: " << achievementNames[i] << endl;
+        cout << "\t\t\t\t\tDescription: " << achievementDescriptions[i] << endl;
 
         if (achievementUnlocked[i] == true)
         {
-            cout << "Status: UNLOCKED!\n";
+            cout << "\t\t\t\t\tStatus: UNLOCKED!\n";
         }
         else
         {
-            cout << "Status: LOCKED\n";
+            cout << "\t\t\t\t\tStatus: LOCKED\n";
         }
 
-        cout << "----------------------------------------\n";
-    }
+        cout << "\n\t\t\t\t\t........................................\n";
+    }                        
 }

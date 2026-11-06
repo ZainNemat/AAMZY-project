@@ -27,18 +27,18 @@ void manageTasks()
 
     while (true)
     {
-        cout << "\n========================================\n";
-        cout << "              MANAGE TASKS\n";
-        cout << "========================================\n";
+        cout << "\n\n\t\t\t\t\t----------------------------------------\n";
+        cout << "\t\t\t\t\t|             MANAGE TASKS             |\n";
+        cout << "\t\t\t\t\t----------------------------------------\n";
 
-        cout << "1. Add Task\n";
-        cout << "2. View Tasks\n";
-        cout << "3. Complete Task\n";
-        cout << "4. Delete Task\n";
-        cout << "5. Back to Main Menu\n";
+        cout << "\t\t\t\t\t1. Add Task\n";
+        cout << "\t\t\t\t\t2. View Tasks\n";
+        cout << "\t\t\t\t\t3. Complete Task\n";
+        cout << "\t\t\t\t\t4. Delete Task\n";
+        cout << "\t\t\t\t\t5. Back to Main Menu\n";
 
-        cout << "========================================\n";
-        cout << "Enter your choice: ";
+        cout << "\t\t\t\t\t----------------------------------------\n";
+        cout << "\t\t\t\t\tEnter your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -63,7 +63,7 @@ void manageTasks()
             return;
 
         default:
-            cout << "\nInvalid choice! Try again.\n";
+            cout << "\n\t\t\t\t\tInvalid choice! Try again.\n";
         }
     }
 }
@@ -72,22 +72,22 @@ void addTask()
 {
     if (taskCount >= 100)
     {
-        cout << "\nTask limit reached!\n";
+        cout << "\n\t\t\t\t\tTask limit reached!\n";
         return;
     }
 
     cin.ignore();
 
-    cout << "\nEnter task name: ";
+    cout << "\n\t\t\t\t\tEnter task name: ";
     getline(cin, tasks[taskCount]);
 
     int difficulty;
 
-    cout << "\nSelect Difficulty:\n";
-    cout << "1. Easy (10 XP)\n";
-    cout << "2. Medium (20 XP)\n";
-    cout << "3. Hard (40 XP)\n";
-    cout << "Enter choice: ";
+    cout << "\n\t\t\t\t\tSelect Difficulty:\n";
+    cout << "\t\t\t\t\t1. Easy (10 XP)\n";
+    cout << "\t\t\t\t\t2. Medium (20 XP)\n";
+    cout << "\t\t\t\t\t3. Hard (40 XP)\n";
+    cout << "\t\t\t\t\tEnter choice: ";
     cin >> difficulty;
 
     if (difficulty == 1)
@@ -104,7 +104,7 @@ void addTask()
     }
     else
     {
-        cout << "\nInvalid difficulty!\n";
+        cout << "\n\t\t\t\t\tInvalid difficulty!\n";
         return;
     }
 
@@ -112,33 +112,33 @@ void addTask()
 
     taskCount++;
 
-    cout << "\nTask added successfully!\n";
+    cout << "\n\t\t\t\t\tTask added successfully!\n";
 }
 
 void viewTasks()
 {
-    cout << "\n========================================\n";
-    cout << "                YOUR TASKS\n";
-    cout << "========================================\n";
+    cout << "\n\n\t\t\t\t\t----------------------------------------\n";
+    cout << "\t\t\t\t\t|              YOUR TASKS              |\n";
+    cout << "\t\t\t\t\t----------------------------------------\n\n";
 
     if (taskCount == 0)
     {
-        cout << "No tasks available.\n";
+        cout << "\t\t\t\t\tNo tasks available.\n";
         return;
     }
 
     for (int i = 0; i < taskCount; i++)
     {
-        cout << "\nTask " << i + 1 << ": " << tasks[i] << endl;
-        cout << "XP Reward: " << taskXP[i] << endl;
+        cout << "\n\t\t\t\t\tTask " << i + 1 << ": " << tasks[i] << endl;
+        cout << "\t\t\t\t\tXP Reward: " << taskXP[i] << endl;
 
         if (taskCompleted[i] == true)
         {
-            cout << "Status: Completed\n";
+            cout << "\t\t\t\t\tStatus: Completed\n";
         }
         else
         {
-            cout << "Status: Pending\n";
+            cout << "\t\t\t\t\tStatus: Pending\n";
         }
     }
 }
@@ -147,7 +147,7 @@ void completeTask()
 {
     if (taskCount == 0)
     {
-        cout << "\nNo tasks available to complete.\n";
+        cout << "\n\t\t\t\t\tNo tasks available to complete.\n";
         return;
     }
 
@@ -155,12 +155,12 @@ void completeTask()
 
     int taskNumber;
 
-    cout << "\nEnter task number to complete: ";
+    cout << "\n\t\t\t\t\tEnter task number to complete: ";
     cin >> taskNumber;
 
     if (taskNumber < 1 || taskNumber > taskCount)
     {
-        cout << "\nInvalid task number!\n";
+        cout << "\n\t\t\t\t\tInvalid task number!\n";
         return;
     }
 
@@ -168,7 +168,7 @@ void completeTask()
 
     if (taskCompleted[index] == true)
     {
-        cout << "\nThis task is already completed!\n";
+        cout << "\n\t\t\t\t\tThis task is already completed!\n";
         return;
     }
 
@@ -177,15 +177,15 @@ void completeTask()
     totalXP = totalXP + taskXP[index];
     currentXP = currentXP + taskXP[index];
 
-    cout << "\nCongratulations! Task completed!\n";
-    cout << "You earned " << taskXP[index] << " XP!\n";
+    cout << "\n\t\t\t\t\tCongratulations! Task completed!\n";
+    cout << "\t\t\t\t\tYou earned " << taskXP[index] << " XP!\n";
 
     while (currentXP >= nextLevelXP)
     {
         currentXP = currentXP - nextLevelXP;
         level++;
 
-        cout << "\nLEVEL UP! You are now Level " << level << "!\n";
+        cout << "\n\t\t\t\t\tLEVEL UP! You are now Level " << level << "!\n";
     }
 
     checkAchievements();
@@ -195,7 +195,7 @@ void deleteTask()
 {
     if (taskCount == 0)
     {
-        cout << "\nNo tasks available to delete.\n";
+        cout << "\n\t\t\t\t\tNo tasks available to delete.\n";
         return;
     }
 
@@ -203,12 +203,12 @@ void deleteTask()
 
     int taskNumber;
 
-    cout << "\nEnter task number to delete: ";
+    cout << "\n\t\t\t\t\tEnter task number to delete: ";
     cin >> taskNumber;
 
     if (taskNumber < 1 || taskNumber > taskCount)
     {
-        cout << "\nInvalid task number!\n";
+        cout << "\n\t\t\t\t\tInvalid task number!\n";
         return;
     }
 
@@ -223,5 +223,5 @@ void deleteTask()
 
     taskCount--;
 
-    cout << "\nTask deleted successfully!\n";
+    cout << "\n\t\t\t\t\tTask deleted successfully!\n";
 }

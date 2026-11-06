@@ -31,23 +31,23 @@ void displayStatistics()
             (completedTasks * 100.0) / taskCount;
     }
 
-    cout << "\n========================================\n";
-    cout << "          PRODUCTIVITY STATISTICS\n";
-    cout << "========================================\n";
+    cout << "\n\t\t\t\t\t----------------------------------------\n";
+    cout << "\t\t\t\t\t|          PRODUCTIVITY STATISTICS     |\n";
+    cout << "\t\t\t\t\t----------------------------------------\n";
 
-    cout << "\n---------- TASK STATISTICS ----------\n";
+    cout << "\n\t\t\t\t\t  ---------- TASK STATISTICS ----------\n\n";
 
-    cout << "Total Tasks: " << taskCount << endl;
-    cout << "Completed Tasks: " << completedTasks << endl;
-    cout << "Pending Tasks: " << pendingTasks << endl;
+    cout << "\t\t\t\t\tTotal Tasks: " << taskCount << endl;
+    cout << "\t\t\t\t\tCompleted Tasks: " << completedTasks << endl;
+    cout << "\t\t\t\t\tPending Tasks: " << pendingTasks << endl;
 
-    cout << "Completion Percentage: "
+    cout << "\t\t\t\t\tCompletion Percentage: "
         << completionPercentage << "%\n";
 
-    cout << "\n---------- USER STATISTICS ----------\n";
+    cout << "\n\t\t\t\t\t  ---------- USER STATISTICS ----------\n\n";
 
-    cout << "Current Level: " << level << endl;
-    cout << "Total XP Earned: " << totalXP << endl;
+    cout << "\t\t\t\t\tCurrent Level: " << level << endl;
+    cout << "\t\t\t\t\tTotal XP Earned: " << totalXP << endl;
 
-    cout << "\n========================================\n";
+    cout << "\n\t\t\t\t\t----------------------------------------\n\n\n";
 }

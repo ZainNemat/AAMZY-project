@@ -11,19 +11,20 @@ void displayStatistics();
 
 void displayMenu()
 {
-    cout << "\n========================================\n";
-    cout << "                 LEVELUP\n";
-    cout << "        GAMIFIED PRODUCTIVITY\n";
-    cout << "========================================\n";
 
-    cout << "1. Dashboard\n";
-    cout << "2. Manage Tasks\n";
-    cout << "3. Achievements\n";
-    cout << "4. Productivity Statistics\n";
-    cout << "5. Exit\n";
+    cout << "\n\t\t\t\t\t****************************************\n";
+    cout << "\t\t\t\t\t*                 LEVELUP              *\n";
+    cout << "\t\t\t\t\t*         GAMIFIED PRODUCTIVITY        *\n";
+    cout << "\t\t\t\t\t****************************************\n";
 
-    cout << "========================================\n";
-    cout << "Enter your choice: ";
+    cout << "\t\t\t\t\t1. Dashboard\n";
+    cout << "\t\t\t\t\t2. Manage Tasks\n";
+    cout << "\t\t\t\t\t3. Achievements\n";
+    cout << "\t\t\t\t\t4. Productivity Statistics\n";
+    cout << "\t\t\t\t\t5. Exit\n";
+                       
+    cout << "\t\t\t\t\t________________________________________\n\n";
+    cout << "\t\t\t\t\tEnter your choice: ";
 }
 
 int main()
@@ -31,14 +32,14 @@ int main()
     int choice;
     string username;
 
-    cout << "========================================\n";
-    cout << "          WELCOME TO LEVELUP\n";
-    cout << "========================================\n";
-    cout << "This is Murtazas branch" << endl;
-    cout << "Enter your username: ";
+    cout << "\t\t\t\t\t========================================\n";
+    cout << "\t\t\t\t\t||     WELCOME TO LEVELUP             ||\n";
+    cout << "\t\t\t\t\t========================================\n\n";
+    cout << "\t\t\t\t\tEnter your username: ";
     getline(cin, username);
 
     initializeUser(username);
+    cout << "\n\n\n\t\t\t\t\tWELCOME " << username << " TO:";
 
     while (true)
     {
@@ -65,11 +66,11 @@ int main()
             break;
 
         case 5:
-            cout << "\nThank you for using LevelUp!\n";
+            cout << "\n\t\t\t\t\tThank you for using LevelUp!\n";
             return 0;
 
         default:
-            cout << "\nInvalid choice! Please try again.\n";
+            cout << "\n\t\t\t\t\tInvalid choice! Please try again.\n";
         }
     }
 

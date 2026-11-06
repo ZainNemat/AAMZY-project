@@ -19,23 +19,24 @@ void initializeUser(string name)
 
 void displayDashboard()
 {
-    cout << "\n========================================\n";
-    cout << "              DASHBOARD\n";
-    cout << "========================================\n";
+                            
+    cout << "\n\n\n\t\t\t\t\t----------------------------------------\n";
+    cout << "\t\t\t\t\t|               DASHBOARD              |\n";
+    cout << "\t\t\t\t\t----------------------------------------\n\n";
 
-    cout << "Welcome, " << username << "!\n\n";
+    cout << "\t\t\t\t\tWelcome, " << username << "!\n\n";
 
-    cout << "Level: " << level << endl;
-    cout << "Total XP: " << totalXP << endl;
+    cout << "\t\t\t\t\tLevel: " << level << endl;
+    cout << "\t\t\t\t\tTotal XP: " << totalXP << endl;
 
-    cout << "Level Progress: "
+    cout << "\t\t\t\t\tLevel Progress: "
         << currentXP << " / " << nextLevelXP << " XP\n";
 
-    cout << "Current Streak: "
+    cout << "\t\t\t\t\tCurrent Streak: "
         << currentStreak << " Days\n";
 
-    cout << "Longest Streak: "
+    cout << "\t\t\t\t\tLongest Streak: "
         << longestStreak << " Days\n";
 
-    cout << "\n========================================\n";
-}
+    cout << "\t\t\t\t\t________________________________________\n\n\n\n";
+}                        
