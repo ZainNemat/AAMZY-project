@@ -12,46 +12,31 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
-set(PROJECT_SOURCES
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
+file(GLOB_RECURSE PROJECT_SOURCES CONFIGURE_DEPENDS
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/app/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/app/*.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/app/*.ui"
 )
 
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+if(QT_VERSION_MAJOR GREATER_EQUAL 6)
     qt_add_executable(Levelup_Qt
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        Achievement.cpp Achievement.h Statistics.cpp Statistics.h Task.cpp Task.h User.cpp User.h
-        mainwindow_tasks.cpp
     )
-# Define target properties for Android with Qt 6 as:
-#    set_property(TARGET Levelup_Qt APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
-#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
-# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
+elseif(ANDROID)
+    add_library(Levelup_Qt SHARED ${PROJECT_SOURCES})
 else()
-    if(ANDROID)
-        add_library(Levelup_Qt SHARED
-            ${PROJECT_SOURCES}
-        )
-# Define properties for Android with Qt 5 after find_package() calls as:
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-    else()
-        add_executable(Levelup_Qt
-            ${PROJECT_SOURCES}
-        )
-    endif()
+    add_executable(Levelup_Qt ${PROJECT_SOURCES})
 endif()
 
 target_link_libraries(Levelup_Qt PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
-# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
-# If you are developing for iOS or macOS you should consider setting an
-# explicit, fixed bundle identifier manually though.
-if(${QT_VERSION} VERSION_LESS 6.1.0)
-  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.Levelup_Qt)
+if(QT_VERSION VERSION_LESS 6.1.0)
+    set(BUNDLE_ID_OPTION
+        MACOSX_BUNDLE_GUI_IDENTIFIER com.example.Levelup_Qt
+    )
 endif()
+
 set_target_properties(Levelup_Qt PROPERTIES
     ${BUNDLE_ID_OPTION}
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
@@ -61,6 +46,7 @@ set_target_properties(Levelup_Qt PROPERTIES
 )
 
 include(GNUInstallDirs)
+
 install(TARGETS Levelup_Qt
     BUNDLE DESTINATION .
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

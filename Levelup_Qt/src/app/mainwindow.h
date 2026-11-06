@@ -22,6 +22,7 @@ private:
     void onAddTask();
     void onCompleteTask();
     void onDeleteTask();
+    void refreshStatistics();
     void refreshDashboard();
 };
 #endif // MAINWINDOW_H

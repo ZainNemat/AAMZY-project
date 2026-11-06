@@ -37,6 +37,7 @@ void MainWindow::onAddTask()
 
     ui->taskNameInput->clear();
     ui->taskNameInput->setFocus();
+    refreshStatistics();
 }
 
 void MainWindow::onCompleteTask()
@@ -57,6 +58,7 @@ void MainWindow::onCompleteTask()
     item->setText(text + QStringLiteral(" - Completed"));
 
     refreshDashboard();
+    refreshStatistics();
 }
 
 void MainWindow::onDeleteTask()
@@ -70,4 +72,5 @@ void MainWindow::onDeleteTask()
     }
 
     delete ui->taskListWidget->takeItem(row);
+    refreshStatistics();
 }

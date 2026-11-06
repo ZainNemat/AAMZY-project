@@ -82,3 +82,9 @@ CMakeLists.txt.user*
 .uic/
 /build*/
 /.qtcreator/
+
+
+# Visual Studio local files and CMake build output
+/.vs/
+/out/
+/CMakeUserPresets.json

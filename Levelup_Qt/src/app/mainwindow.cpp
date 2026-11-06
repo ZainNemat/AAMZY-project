@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->xpProgressBar->setFormat("%v / %m XP");
     refreshDashboard();
+    refreshStatistics();
 
     connect(ui->pushButton, &QPushButton::clicked,
             this, &MainWindow::onAddTask);
