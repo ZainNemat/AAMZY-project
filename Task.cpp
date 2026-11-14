@@ -1,4 +1,5 @@
 
+#include <windows.h>
 #include <iostream>
 #include <string>
 using namespace std;
@@ -7,6 +8,10 @@ extern int totalXP;
 extern int currentXP;
 extern int nextLevelXP;
 extern int level;
+extern int completedCount;
+int readInt(string prompt);
+void paintBelow();
+
 
 void checkAchievements();
 
@@ -23,10 +28,12 @@ void deleteTask();
 
 void manageTasks()
 {
-    int choice;
+    HANDLE hc = GetStdHandle(STD_OUTPUT_HANDLE);
+    int taskChoice;
 
     while (true)
     {
+        paintBelow();
         cout << "\n\n\t\t\t\t\t----------------------------------------\n";
         cout << "\t\t\t\t\t|             MANAGE TASKS             |\n";
         cout << "\t\t\t\t\t----------------------------------------\n";
@@ -38,10 +45,9 @@ void manageTasks()
         cout << "\t\t\t\t\t5. Back to Main Menu\n";
 
         cout << "\t\t\t\t\t----------------------------------------\n";
-        cout << "\t\t\t\t\tEnter your choice: ";
-        cin >> choice;
+        taskChoice = readInt("\t\t\t\t\tEnter your choice: ");
 
-        switch (choice)
+        switch (taskChoice)
         {
         case 1:
             addTask();
@@ -63,23 +69,41 @@ void manageTasks()
             return;
 
         default:
-            cout << "\n\t\t\t\t\tInvalid choice! Try again.\n";
+            SetConsoleTextAttribute(hc, 0xf4);
+            cout << "\n\t\t\t\t\tInvalid choice! Try again.";
+            SetConsoleTextAttribute(hc, 0xf0);
+            cout << endl;
         }
     }
+    
+
 }
 
 void addTask()
 {
+    HANDLE hc = GetStdHandle(STD_OUTPUT_HANDLE);
     if (taskCount >= 100)
     {
-        cout << "\n\t\t\t\t\tTask limit reached!\n";
+        SetConsoleTextAttribute(hc, 0xf4);
+        cout << "\n\t\t\t\t\tTask limit reached!";
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << endl;
         return;
     }
 
-    cin.ignore();
+    while (true)
+    {
+        cout << "\n\t\t\t\t\tEnter task name: ";
+        getline(cin, tasks[taskCount]);
 
-    cout << "\n\t\t\t\t\tEnter task name: ";
-    getline(cin, tasks[taskCount]);
+        if (tasks[taskCount].find_first_not_of(" \t") != string::npos)
+            break;                                   
+
+        SetConsoleTextAttribute(hc, 0xf4);
+        cout << "\n\t\t\t\t\tTask name cannot be empty!";
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << endl;
+    }
 
     int difficulty;
 
@@ -87,8 +111,7 @@ void addTask()
     cout << "\t\t\t\t\t1. Easy (10 XP)\n";
     cout << "\t\t\t\t\t2. Medium (20 XP)\n";
     cout << "\t\t\t\t\t3. Hard (40 XP)\n";
-    cout << "\t\t\t\t\tEnter choice: ";
-    cin >> difficulty;
+    difficulty = readInt("\t\t\t\t\tEnter choice: ");
 
     if (difficulty == 1)
     {
@@ -104,26 +127,36 @@ void addTask()
     }
     else
     {
-        cout << "\n\t\t\t\t\tInvalid difficulty!\n";
+        SetConsoleTextAttribute(hc, 0xf4);
+        cout << "\n\t\t\t\t\tInvalid difficulty!";
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << endl;
         return;
     }
 
     taskCompleted[taskCount] = false;
 
     taskCount++;
+    SetConsoleTextAttribute(hc, 0xf3);
+    cout << "\n\t\t\t\t\tTask added successfully!";
+    SetConsoleTextAttribute(hc, 0xf0);
+    cout << endl;
 
-    cout << "\n\t\t\t\t\tTask added successfully!\n";
 }
 
 void viewTasks()
 {
+    HANDLE hc = GetStdHandle(STD_OUTPUT_HANDLE);
     cout << "\n\n\t\t\t\t\t----------------------------------------\n";
     cout << "\t\t\t\t\t|              YOUR TASKS              |\n";
     cout << "\t\t\t\t\t----------------------------------------\n\n";
 
     if (taskCount == 0)
     {
-        cout << "\t\t\t\t\tNo tasks available.\n";
+        SetConsoleTextAttribute(hc, 0xf4);
+        cout << "\t\t\t\t\tNo tasks available.";
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << endl;
         return;
     }
 
@@ -141,13 +174,18 @@ void viewTasks()
             cout << "\t\t\t\t\tStatus: Pending\n";
         }
     }
+   
 }
 
 void completeTask()
 {
+    HANDLE hc = GetStdHandle(STD_OUTPUT_HANDLE);
     if (taskCount == 0)
     {
-        cout << "\n\t\t\t\t\tNo tasks available to complete.\n";
+        SetConsoleTextAttribute(hc, 0xf4);
+        cout << "\n\t\t\t\t\tNo tasks available to complete.";
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << endl;
         return;
     }
 
@@ -155,12 +193,14 @@ void completeTask()
 
     int taskNumber;
 
-    cout << "\n\t\t\t\t\tEnter task number to complete: ";
-    cin >> taskNumber;
+    taskNumber = readInt("\n\t\t\t\t\tEnter task number to complete: ");
 
     if (taskNumber < 1 || taskNumber > taskCount)
     {
-        cout << "\n\t\t\t\t\tInvalid task number!\n";
+        SetConsoleTextAttribute(hc, 0xf4);
+        cout << "\n\t\t\t\t\tInvalid task number!";
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << endl;
         return;
     }
 
@@ -173,12 +213,19 @@ void completeTask()
     }
 
     taskCompleted[index] = true;
+    completedCount++;
 
     totalXP = totalXP + taskXP[index];
     currentXP = currentXP + taskXP[index];
 
-    cout << "\n\t\t\t\t\tCongratulations! Task completed!\n";
-    cout << "\t\t\t\t\tYou earned " << taskXP[index] << " XP!\n";
+    SetConsoleTextAttribute(hc, 0xf3);
+    cout << "\n\t\t\t\t\tCongratulations! Task completed!";
+    SetConsoleTextAttribute(hc, 0xf0);
+    cout << endl;
+    SetConsoleTextAttribute(hc, 0xf3);
+    cout << "\t\t\t\t\tYou earned " << taskXP[index] << " XP!";
+    SetConsoleTextAttribute(hc, 0xf0);
+    cout << endl;
 
     while (currentXP >= nextLevelXP)
     {
@@ -189,13 +236,18 @@ void completeTask()
     }
 
     checkAchievements();
+  
 }
 
 void deleteTask()
 {
+    HANDLE hc = GetStdHandle(STD_OUTPUT_HANDLE);
     if (taskCount == 0)
     {
-        cout << "\n\t\t\t\t\tNo tasks available to delete.\n";
+        SetConsoleTextAttribute(hc, 0xf4);
+        cout << "\n\t\t\t\t\tNo tasks available to delete.";
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << endl;
         return;
     }
 
@@ -203,12 +255,14 @@ void deleteTask()
 
     int taskNumber;
 
-    cout << "\n\t\t\t\t\tEnter task number to delete: ";
-    cin >> taskNumber;
+    taskNumber = readInt("\n\t\t\t\t\tEnter task number to delete: ");
 
     if (taskNumber < 1 || taskNumber > taskCount)
     {
-        cout << "\n\t\t\t\t\tInvalid task number!\n";
+        SetConsoleTextAttribute(hc, 0xf4);
+        cout << "\n\t\t\t\t\tInvalid task number!";
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << endl;
         return;
     }
 
@@ -223,5 +277,8 @@ void deleteTask()
 
     taskCount--;
 
-    cout << "\n\t\t\t\t\tTask deleted successfully!\n";
+    SetConsoleTextAttribute(hc, 0xf3);
+    cout << "\n\t\t\t\t\tTask deleted successfully!";
+    SetConsoleTextAttribute(hc, 0xf0);
+    cout << endl; 
 }

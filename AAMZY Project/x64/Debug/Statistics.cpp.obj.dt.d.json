@@ -114,7 +114,10 @@
             "m:\\windows kits\\10\\include\\10.0.28000.0\\ucrt\\ctype.h",
             "m:\\vs\\visual nstudio\\vc\\tools\\msvc\\14.51.36231\\include\\clocale",
             "m:\\windows kits\\10\\include\\10.0.28000.0\\ucrt\\locale.h",
-            "m:\\vs\\visual nstudio\\vc\\tools\\msvc\\14.51.36231\\include\\ostream"
+            "m:\\vs\\visual nstudio\\vc\\tools\\msvc\\14.51.36231\\include\\ostream",
+            "m:\\vs\\visual nstudio\\vc\\tools\\msvc\\14.51.36231\\include\\iomanip",
+            "m:\\vs\\visual nstudio\\vc\\tools\\msvc\\14.51.36231\\include\\xlocmon",
+            "m:\\vs\\visual nstudio\\vc\\tools\\msvc\\14.51.36231\\include\\xloctime"
         ],
         "ImportedModules": [],
         "ImportedHeaderUnits": []

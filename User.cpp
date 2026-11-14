@@ -19,7 +19,6 @@ void initializeUser(string name)
 
 void displayDashboard()
 {
-                            
     cout << "\n\n\n\t\t\t\t\t----------------------------------------\n";
     cout << "\t\t\t\t\t|               DASHBOARD              |\n";
     cout << "\t\t\t\t\t----------------------------------------\n\n";

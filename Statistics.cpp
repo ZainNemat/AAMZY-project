@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 extern int totalXP;
@@ -42,7 +43,7 @@ void displayStatistics()
     cout << "\t\t\t\t\tPending Tasks: " << pendingTasks << endl;
 
     cout << "\t\t\t\t\tCompletion Percentage: "
-        << completionPercentage << "%\n";
+        << fixed << setprecision(1) << completionPercentage << "%\n";
 
     cout << "\n\t\t\t\t\t  ---------- USER STATISTICS ----------\n\n";
 
