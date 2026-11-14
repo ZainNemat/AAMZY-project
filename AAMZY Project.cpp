@@ -1,7 +1,6 @@
 
 #include <iostream>
 #include <string>
-#define NOMINMAX
 #include <windows.h>
 #include <cstdlib>
 using namespace std;
