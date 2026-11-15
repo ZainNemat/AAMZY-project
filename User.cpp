@@ -1,6 +1,5 @@
-
+#include "User.h"
 #include <iostream>
-#include <string>
 using namespace std;
 
 string username = "Player";
@@ -19,23 +18,20 @@ void initializeUser(string name)
 
 void displayDashboard()
 {
-    cout << "\n========================================\n";
-    cout << "              DASHBOARD\n";
-    cout << "========================================\n";
+    cout << "\n----------------------------------------\n";
+    cout << "|               DASHBOARD              |\n";
+    cout << "----------------------------------------\n";
 
-    cout << "Welcome, " << username << "!\n\n";
+    cout << "\nWelcome, " << username << "!\n\n";
 
-    cout << "Level: " << level << endl;
-    cout << "Total XP: " << totalXP << endl;
+    cout << "Level: " << level << "\n";
+    cout << "Total XP: " << totalXP << "\n";
 
     cout << "Level Progress: "
         << currentXP << " / " << nextLevelXP << " XP\n";
 
-    cout << "Current Streak: "
-        << currentStreak << " Days\n";
+    cout << "Current Streak: " << currentStreak << " Days\n";
+    cout << "Longest Streak: " << longestStreak << " Days\n";
 
-    cout << "Longest Streak: "
-        << longestStreak << " Days\n";
-
-    cout << "\n========================================\n";
+    cout << "________________________________________\n";
 }

@@ -4,6 +4,7 @@
         "Source": "d:\\development\\assignments\\class projects\\aamzy project\\statistics.cpp",
         "ProvidedModule": "",
         "Includes": [
+            "d:\\development\\assignments\\class projects\\aamzy project\\statistics.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\iostream",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\yvals_core.h",
             "c:\\program files\\microsoft visual studio\\18\\community\\vc\\tools\\msvc\\14.51.36231\\include\\vcruntime.h",

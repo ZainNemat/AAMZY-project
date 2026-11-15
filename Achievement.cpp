@@ -1,11 +1,10 @@
-
+#include "Achievement.h"
+#include "User.h"
 #include <iostream>
 #include <string>
+#include <windows.h>
+#include "Task.h"
 using namespace std;
-extern int totalXP;
-extern int level;
-extern int taskCount;
-extern bool taskCompleted[100];
 
 string achievementNames[5] =
 {
@@ -25,68 +24,46 @@ string achievementDescriptions[5] =
     "Reach Level 5"
 };
 
-bool achievementUnlocked[5] = { false, false, false, false, false };
+bool achievementUnlocked[5] = { false };
 
 void checkAchievements()
 {
-    int completedTasks = 0;
-
-    for (int i = 0; i < taskCount; i++)
-    {
-        if (taskCompleted[i] == true)
-        {
-            completedTasks++;
-        }
-    }
-
-    if (completedTasks >= 1)
-    {
-        achievementUnlocked[0] = true;
-    }
-
-    if (completedTasks >= 5)
-    {
-        achievementUnlocked[1] = true;
-    }
-
-    if (completedTasks >= 10)
-    {
-        achievementUnlocked[2] = true;
-    }
-
-    if (totalXP >= 500)
-    {
-        achievementUnlocked[3] = true;
-    }
-
-    if (level >= 5)
-    {
-        achievementUnlocked[4] = true;
-    }
+    if (completedCount >= 1)  achievementUnlocked[0] = true;
+    if (completedCount >= 5)  achievementUnlocked[1] = true;
+    if (completedCount >= 10) achievementUnlocked[2] = true;
+    if (totalXP >= 500)       achievementUnlocked[3] = true;
+    if (level >= 5)           achievementUnlocked[4] = true;
 }
 
 void displayAchievements()
 {
+    HANDLE hc = GetStdHandle(STD_OUTPUT_HANDLE);
     checkAchievements();
 
-    cout << "\n========================================\n";
-    cout << "              ACHIEVEMENTS\n";
-    cout << "========================================\n";
+    cout << "\n----------------------------------------\n";
+    cout << "|              ACHIEVEMENTS            |\n";
+    cout << "----------------------------------------\n";
 
     for (int i = 0; i < 5; i++)
     {
-        cout << "\nAchievement: " << achievementNames[i] << endl;
-        cout << "Description: " << achievementDescriptions[i] << endl;
+        cout << "\nAchievement: " << achievementNames[i] << "\n";
+        cout << "Description: " << achievementDescriptions[i] << "\n";
+        cout << "Status: ";
 
-        if (achievementUnlocked[i] == true)
+        if (achievementUnlocked[i])
         {
-            cout << "Status: UNLOCKED!\n";
+            SetConsoleTextAttribute(hc, 0xf3);
+            cout << "UNLOCKED!";
         }
         else
         {
-            cout << "Status: LOCKED\n";
+            SetConsoleTextAttribute(hc, 0xf4);
+            cout << "LOCKED";
         }
 
-        cout << "----------------------------------------\n";
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << "\n";
+
+        cout << "\n........................................\n";
     }
 }
