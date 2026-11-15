@@ -1,6 +1,5 @@
-
+#include "User.h"
 #include <iostream>
-#include <string>
 using namespace std;
 
 string username = "Player";
@@ -19,23 +18,20 @@ void initializeUser(string name)
 
 void displayDashboard()
 {
-    cout << "\n\n\n\t\t\t\t\t----------------------------------------\n";
-    cout << "\t\t\t\t\t|               DASHBOARD              |\n";
-    cout << "\t\t\t\t\t----------------------------------------\n\n";
+    cout << "\n----------------------------------------\n";
+    cout << "|               DASHBOARD              |\n";
+    cout << "----------------------------------------\n";
 
-    cout << "\t\t\t\t\tWelcome, " << username << "!\n\n";
+    cout << "\nWelcome, " << username << "!\n\n";
 
-    cout << "\t\t\t\t\tLevel: " << level << endl;
-    cout << "\t\t\t\t\tTotal XP: " << totalXP << endl;
+    cout << "Level: " << level << "\n";
+    cout << "Total XP: " << totalXP << "\n";
 
-    cout << "\t\t\t\t\tLevel Progress: "
+    cout << "Level Progress: "
         << currentXP << " / " << nextLevelXP << " XP\n";
 
-    cout << "\t\t\t\t\tCurrent Streak: "
-        << currentStreak << " Days\n";
+    cout << "Current Streak: " << currentStreak << " Days\n";
+    cout << "Longest Streak: " << longestStreak << " Days\n";
 
-    cout << "\t\t\t\t\tLongest Streak: "
-        << longestStreak << " Days\n";
-
-    cout << "\t\t\t\t\t________________________________________\n\n\n\n";
-}                        
+    cout << "________________________________________\n";
+}

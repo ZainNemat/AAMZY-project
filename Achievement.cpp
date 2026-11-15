@@ -1,13 +1,10 @@
-
+#include "Achievement.h"
+#include "User.h"
 #include <iostream>
 #include <string>
 #include <windows.h>
+#include "Task.h"
 using namespace std;
-extern int totalXP;
-extern int level;
-extern int taskCount;
-extern bool taskCompleted[100];
-extern int completedCount;
 
 string achievementNames[5] =
 {
@@ -27,7 +24,7 @@ string achievementDescriptions[5] =
     "Reach Level 5"
 };
 
-bool achievementUnlocked[5] = { false, false, false, false, false };
+bool achievementUnlocked[5] = { false };
 
 void checkAchievements()
 {
@@ -42,33 +39,31 @@ void displayAchievements()
 {
     HANDLE hc = GetStdHandle(STD_OUTPUT_HANDLE);
     checkAchievements();
-                        
-    cout << "\n\n\n\t\t\t\t\t----------------------------------------\n";
-    cout << "\t\t\t\t\t|              ACHIEVEMENTS            |\n";
-    cout << "\t\t\t\t\t----------------------------------------\n";
+
+    cout << "\n----------------------------------------\n";
+    cout << "|              ACHIEVEMENTS            |\n";
+    cout << "----------------------------------------\n";
 
     for (int i = 0; i < 5; i++)
     {
-        cout << "\n\t\t\t\t\tAchievement: " << achievementNames[i] << endl;
-        cout << "\t\t\t\t\tDescription: " << achievementDescriptions[i] << endl;
+        cout << "\nAchievement: " << achievementNames[i] << "\n";
+        cout << "Description: " << achievementDescriptions[i] << "\n";
+        cout << "Status: ";
 
-        if (achievementUnlocked[i] == true)
+        if (achievementUnlocked[i])
         {
-            cout << "\t\t\t\t\tStatus: ";
-            SetConsoleTextAttribute(hc, 0xf3);   // blue text on white background
-            cout<<"UNLOCKED!";
-            SetConsoleTextAttribute(hc, 0xf0);   // back to the normal colour
-            cout << "\n";
+            SetConsoleTextAttribute(hc, 0xf3);
+            cout << "UNLOCKED!";
         }
         else
         {
-            cout << "\t\t\t\t\tStatus: ";
-            SetConsoleTextAttribute(hc, 0xf4);   // red text on the white background
+            SetConsoleTextAttribute(hc, 0xf4);
             cout << "LOCKED";
-            SetConsoleTextAttribute(hc, 0xf0);   // back to the normal colour
-            cout << "\n";
         }
 
-        cout << "\n\t\t\t\t\t........................................\n";
-    }                        
+        SetConsoleTextAttribute(hc, 0xf0);
+        cout << "\n";
+
+        cout << "\n........................................\n";
+    }
 }

@@ -1,6 +1,5 @@
-
+#include "Statistics.h"
 #include <iostream>
-#include <iomanip>
 using namespace std;
 
 extern int totalXP;
@@ -11,44 +10,35 @@ extern bool taskCompleted[100];
 void displayStatistics()
 {
     int completedTasks = 0;
-    int pendingTasks = 0;
-    double completionPercentage = 0;
 
     for (int i = 0; i < taskCount; i++)
     {
-        if (taskCompleted[i] == true)
-        {
+        if (taskCompleted[i])
             completedTasks++;
-        }
-        else
-        {
-            pendingTasks++;
-        }
     }
+
+    int pendingTasks = taskCount - completedTasks;
+    double completionPercentage = 0;
 
     if (taskCount > 0)
-    {
-        completionPercentage =
-            (completedTasks * 100.0) / taskCount;
-    }
+        completionPercentage = (completedTasks * 100.0) / taskCount;
 
-    cout << "\n\t\t\t\t\t----------------------------------------\n";
-    cout << "\t\t\t\t\t|          PRODUCTIVITY STATISTICS     |\n";
-    cout << "\t\t\t\t\t----------------------------------------\n";
+    cout << "\n----------------------------------------\n";
+    cout << "|          PRODUCTIVITY STATISTICS     |\n";
+    cout << "----------------------------------------\n";
 
-    cout << "\n\t\t\t\t\t  ---------- TASK STATISTICS ----------\n\n";
+    cout << "\n---------- TASK STATISTICS ----------\n\n";
 
-    cout << "\t\t\t\t\tTotal Tasks: " << taskCount << endl;
-    cout << "\t\t\t\t\tCompleted Tasks: " << completedTasks << endl;
-    cout << "\t\t\t\t\tPending Tasks: " << pendingTasks << endl;
+    cout << "Total Tasks: " << taskCount << "\n";
+    cout << "Completed Tasks: " << completedTasks << "\n";
+    cout << "Pending Tasks: " << pendingTasks << "\n";
 
-    cout << "\t\t\t\t\tCompletion Percentage: "
-        << fixed << setprecision(1) << completionPercentage << "%\n";
+    cout << "Completion Percentage: " << completionPercentage << "%\n";
 
-    cout << "\n\t\t\t\t\t  ---------- USER STATISTICS ----------\n\n";
+    cout << "\n---------- USER STATISTICS ----------\n\n";
 
-    cout << "\t\t\t\t\tCurrent Level: " << level << endl;
-    cout << "\t\t\t\t\tTotal XP Earned: " << totalXP << endl;
+    cout << "Current Level: " << level << "\n";
+    cout << "Total XP Earned: " << totalXP << "\n";
 
-    cout << "\n\t\t\t\t\t----------------------------------------\n\n\n";
+    cout << "\n----------------------------------------\n";
 }
